@@ -68,6 +68,13 @@ set hlsearch
 "set cursorcolumn
 set termguicolors
 
+"Basic autocomp w/o TAB-scroll"
+inoremap <expr> <TAB> pumvisible() ? "\<C-y>" : "\<C-g>u\<TAB>"
+
+"Ruby solargraph gem"
+let g:coc_global_extensions = ['coc-solargraph']
+
+"Remaps
 nnoremap zz :update<cr>
 nnoremap qq :q!
 nnoremap <CR> :noh<CR><CR>
@@ -79,16 +86,8 @@ map <C-h> :bprev<CR>
 map <C-E> :E<CR>
 map <C-a> :set filetype=asm<CR>
 
-"Basic autocomp w/o TAB-scroll"
-inoremap <expr> <TAB> pumvisible() ? "\<C-y>" : "\<C-g>u\<TAB>"
-
-"jkl; for the win!"
-"noremap ; l
-"noremap l k
-"noremap k j
-"noremap j h
-nnoremap <S-j> {
-nnoremap <S-k> }
+nnoremap <S-k> {
+nnoremap <S-j> }
 
 nnoremap <S-Up> {
 nnoremap <S-Down> }
@@ -101,4 +100,3 @@ vnoremap <C-d> <Esc>
               
 noremap ,q <esc>
 vnoremap ,q <esc>
-let g:coc_global_extensions = ['coc-solargraph']

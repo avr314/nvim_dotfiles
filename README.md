@@ -1,5 +1,4 @@
-neovim dotfiles v0.1
+neovim dotfiles v0.2
 =============================================
 
-* Current status: VimScript about 99%
-* Minimal transition to Lua (lua << EOF ... EOF)
+* LUA transition in progress (Lazy package manager)
