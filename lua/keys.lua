@@ -17,3 +17,9 @@ vim.keymap.set('n', '<S-Down>', '}')
 -- LSP Diag
 vim.keymap.set('n', '<C-Up>', ':ToggleDiagOn<CR>')
 vim.keymap.set('n', '<C-Down>', ':ToggleDiagOff<CR>')
+
+-- Tree toggle
+vim.keymap.set('n', '<C-s>', function() require('nvim-tree.api').tree.toggle() end)
+
+-- Close buffer
+vim.keymap.set('n', '<C-q>', ':bd<CR>')

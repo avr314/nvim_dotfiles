@@ -1,0 +1,2 @@
+Lazy-based config
+=================

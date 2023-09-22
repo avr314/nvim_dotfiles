@@ -91,6 +91,16 @@ require('lazy').setup({
   --    vim.cmd.colorscheme 'onedark'
   --  end,
   --},
+  {
+    'nvim-tree/nvim-tree.lua',
+    dependencies = {
+      'nvim-tree/nvim-web-devicons',
+    },
+    version = 'nightly',
+    config = function()
+      require('nvim-tree').setup()
+    end
+  },
 
   { 'catppuccin/nvim',
     name = 'catppuccin',
@@ -212,58 +222,6 @@ require('lazy').setup({
   -- { import = 'custom.plugins' },
 }, {})
 
--- [[ Setting options ]]
--- See `:help vim.o`
--- NOTE: You can change these options as you wish!
-
---vim.o.relativenumber = true
----- Set highlight on search
---vim.o.hlsearch = false
---
----- Make line numbers default
---vim.wo.number = true
---
----- Enable mouse mode
---vim.o.mouse = 'a'
---
----- Sync clipboard between OS and Neovim.
-----  Remove this option if you want your OS clipboard to remain independent.
-----  See `:help 'clipboard'`
---vim.o.clipboard = 'unnamedplus'
---
----- Enable break indent
---vim.o.breakindent = true
---
----- Save undo history
---vim.o.undofile = true
---
----- Case-insensitive searching UNLESS \C or capital in search
---vim.o.ignorecase = true
---vim.o.smartcase = true
---
----- Keep signcolumn on by default
---vim.wo.signcolumn = 'yes'
---
----- Decrease update time
---vim.o.updatetime = 250
---vim.o.timeoutlen = 300
---
----- Set completeopt to have a better completion experience
---vim.o.completeopt = 'menuone,noselect'
---
----- NOTE: You should make sure your terminal supports this
---vim.o.termguicolors = true
---
----- [[ Basic Keymaps ]]
---
----- Keymaps for better default experience
----- See `:help vim.keymap.set()`
---vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
-
--- Remap for dealing with word wrap
--- vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
--- vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
-
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
@@ -289,25 +247,25 @@ require('telescope').setup {
 }
 
 ---- Enable telescope fzf native, if installed
---pcall(require('telescope').load_extension, 'fzf')
---
----- See `:help telescope.builtin`
---vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
---vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
---vim.keymap.set('n', '<leader>/', function()
---  -- You can pass additional configuration to telescope to change theme, layout, etc.
---  require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
---    winblend = 10,
---    previewer = false,
---  })
---end, { desc = '[/] Fuzzily search in current buffer' })
---
---vim.keymap.set('n', '<leader>gf', require('telescope.builtin').git_files, { desc = 'Search [G]it [F]iles' })
---vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles' })
---vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
---vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
---vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
---vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
+pcall(require('telescope').load_extension, 'fzf')
+
+-- See `:help telescope.builtin`
+vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
+vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
+vim.keymap.set('n', '<leader>/', function()
+  -- You can pass additional configuration to telescope to change theme, layout, etc.
+  require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
+    -- winblend = 10,
+    previewer = true,
+  })
+end, { desc = '[/] Fuzzily search in current buffer' })
+
+vim.keymap.set('n', '<leader>gf', require('telescope.builtin').git_files, { desc = 'Search [G]it [F]iles' })
+vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles' })
+vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
+vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
+vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
+vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
 
 
 -- [[ Configure Treesitter ]]
@@ -403,15 +361,15 @@ local on_attach = function(_, bufnr)
   nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
 
   nmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
-  --nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
+  nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
   nmap('gI', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
   nmap('<leader>D', vim.lsp.buf.type_definition, 'Type [D]efinition')
-  --nmap('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
-  --nmap('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
+  nmap('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
+  nmap('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
 
   -- See `:help K` for why this keymap
-  --nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
-  --nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
+  nmap('D', vim.lsp.buf.hover, 'Hover Documentation')
+  nmap('S', vim.lsp.buf.signature_help, 'Signature Documentation')
 
   -- Lesser used LSP functionality
   nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
