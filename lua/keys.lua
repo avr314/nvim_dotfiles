@@ -15,11 +15,17 @@ vim.keymap.set('n', '<S-Up>', '{')
 vim.keymap.set('n', '<S-Down>', '}')
 
 -- LSP Diag
-vim.keymap.set('n', '<C-Up>', ':ToggleDiagOn<CR>')
-vim.keymap.set('n', '<C-Down>', ':ToggleDiagOff<CR>')
+vim.keymap.set('n', '<C-PageDown>', ':ToggleDiagOn<CR>')
+vim.keymap.set('n', '<C-PageUp>', ':ToggleDiagOff<CR>')
 
 -- Tree toggle
 vim.keymap.set('n', '<C-s>', function() require('nvim-tree.api').tree.toggle() end)
 
 -- Close buffer
 vim.keymap.set('n', '<C-q>', ':bd<CR>')
+
+-- Pane navigation 
+vim.keymap.set('n', '<S-Up>', '<C-w><Up>')
+vim.keymap.set('n', '<S-Down>', '<C-w><Down>')
+vim.keymap.set('n', '<S-Right>', '<C-w><Right>')
+vim.keymap.set('n', '<S-Left>', '<C-w><Left>')
