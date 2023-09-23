@@ -11,13 +11,8 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- NOTE: Here is where you install your plugins.
---  You can configure plugins using the `config` key.
---
---  You can also configure plugins after the setup call,
---    as they will be available in your neovim runtime.
+--  Configure plugins
 require('lazy').setup({
-  -- NOTE: First, some plugins that don't require any configuration
 
   -- Git related plugins
   'tpope/vim-fugitive',
@@ -26,8 +21,7 @@ require('lazy').setup({
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
 
-  -- NOTE: This is where your plugins related to LSP can be installed.
-  --  The configuration is done below. Search for lspconfig to find it below.
+  -- LSP-related config
   {
     -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
@@ -40,7 +34,7 @@ require('lazy').setup({
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
       { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
 
-      -- Additional lua configuration, makes nvim stuff amazing!
+      -- Additional lua config
       'folke/neodev.nvim',
     },
   },
@@ -61,13 +55,12 @@ require('lazy').setup({
     },
   },
 
-  -- Useful plugin to show you pending keybinds.
+  -- Pending keybinds.
   { 'folke/which-key.nvim', opts = {} },
   {
     -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
     opts = {
-      -- See `:help gitsigns.txt`
       signs = {
         add = { text = '+' },
         change = { text = '~' },
@@ -83,14 +76,7 @@ require('lazy').setup({
     },
   },
 
-  --{
-  --  -- Theme inspired by Atom
-  --  'navarasu/onedark.nvim',
-  --  priority = 1000,
-  --  config = function()
-  --    vim.cmd.colorscheme 'onedark'
-  --  end,
-  --},
+  -- Sidebar Tree
   {
     'nvim-tree/nvim-tree.lua',
     dependencies = {
@@ -102,6 +88,7 @@ require('lazy').setup({
     end
   },
 
+  -- Catppuccin theme
   { 'catppuccin/nvim',
     name = 'catppuccin',
     config = function ()
@@ -115,10 +102,9 @@ require('lazy').setup({
     end
   },
 
+  -- Status line
   {
-    -- Set lualine as statusline
     'nvim-lualine/lualine.nvim',
-    -- See `:help lualine.txt`
     opts = {
       options = {
         icons_enabled = false,
@@ -129,14 +115,17 @@ require('lazy').setup({
     },
   },
 
+  -- Auto parens pairing
   {
     'jiangmiao/auto-pairs',
   },
 
+  -- Line indents vertical dashed
   {
     'Yggdroot/indentLine'
   },
 
+  -- Toggle diag messages
   {
     'WhoIsSethDaniel/toggle-lsp-diagnostics.nvim',
     config = function()
@@ -144,6 +133,7 @@ require('lazy').setup({
     end
   },
 
+  -- Buffer tabs
   {
     'akinsho/bufferline.nvim',
     version = "*",
@@ -163,18 +153,7 @@ require('lazy').setup({
     end
   },
 
-  --{
-  --  -- Add indentation guides even on blank lines
-  --  'lukas-reineke/indent-blankline.nvim',
-  --  -- Enable `lukas-reineke/indent-blankline.nvim`
-  --  -- See `:help indent_blankline.txt`
-  --  opts = {
-  --    char = '┊',
-  --    show_trailing_blankline_indent = false,
-  --  },
-  --},
-
-  -- "gc" to comment visual regions/lines
+  -- "gc" to comment
   { 'numToStr/Comment.nvim', opts = {} },
 
   -- Fuzzy Finder (files, lsp, etc)
@@ -207,19 +186,6 @@ require('lazy').setup({
     build = ':TSUpdate',
   },
 
-  -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
-  --       These are some example plugins that I've included in the kickstart repository.
-  --       Uncomment any of the lines below to enable them.
-  -- require 'kickstart.plugins.autoformat',
-  -- require 'kickstart.plugins.debug',
-
-  -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
-  --    You can use this folder to prevent any conflicts with this init.lua if you're interested in keeping
-  --    up-to-date with whatever is in the kickstart repo.
-  --    Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
-  --
-  --    For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
-  -- { import = 'custom.plugins' },
 }, {})
 
 -- [[ Highlight on yank ]]
@@ -334,12 +300,6 @@ require('nvim-treesitter.configs').setup {
   },
 }
 
--- Diagnostic keymaps
---vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
---vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
---vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
---vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
-
 -- [[ Configure LSP ]]
 --  This function gets run when an LSP connects to a particular buffer.
 local on_attach = function(_, bufnr)
@@ -386,17 +346,10 @@ local on_attach = function(_, bufnr)
 end
 
 -- Enable the following language servers
---  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
---
---  Add any additional override configuration in the following tables. They will be passed to
---  the `settings` field of the server config. You must look up that documentation yourself.
---
---  If you want to override the default filetypes that your language server will attach to you can
---  define the property 'filetypes' to the map in question.
 local servers = {
    clangd = {},
   -- gopls = {},
-  -- pyright = {},
+   pyright = {},
   -- rust_analyzer = {},
   -- tsserver = {},
   -- html = { filetypes = { 'html', 'twig', 'hbs'} },
