@@ -24,3 +24,10 @@ vim.o.timeoutlen = 300
 vim.o.completeopt = 'menuone,noselect'
 
 vim.o.termguicolors = true
+
+-- Use spaces instead of tabs
+vim.o.expandtab = true
+-- Tab = <num> spaces
+vim.o.tabstop = 2
+-- '>>' operator <num> spaces
+vim.o.shiftwidth = 2
