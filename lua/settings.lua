@@ -31,3 +31,19 @@ vim.o.expandtab = true
 vim.o.tabstop = 2
 -- '>>' operator <num> spaces
 vim.o.shiftwidth = 2
+
+-- vim.o.cursorcolumn = true
+vim.o.cursorline = true
+
+vim.cmd([[ 
+  :highlight CursorColumn guibg=#3e4452
+  :highlight CursorLine guibg=#3e4452
+]])
+
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+
+-- Folded functions
+vim.cmd([[ 
+  :highlight Folded guifg=#3e4452
+]])

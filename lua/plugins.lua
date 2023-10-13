@@ -100,6 +100,11 @@ require('lazy').setup({
     end
   },
 
+  {
+    'delafthi/nord-nvim',
+    name = 'nord-nvim',
+  },
+
   -- Status line
   {
     'nvim-lualine/lualine.nvim',
@@ -111,6 +116,10 @@ require('lazy').setup({
         section_separators = '',
       },
     },
+  },
+
+  {
+    'github/copilot.vim'
   },
 
   -- Auto parens
