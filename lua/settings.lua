@@ -40,6 +40,8 @@ vim.cmd([[
   :highlight CursorLine guibg=#3e4452
 ]])
 
+-- Treesitter-based fold (TODO: add LSP-based (kevinhwang91/nvim-ufo))
+
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 
@@ -47,3 +49,5 @@ vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.cmd([[ 
   :highlight Folded guifg=#3e4452
 ]])
+
+vim.opt.foldenable = false
