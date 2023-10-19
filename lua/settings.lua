@@ -1,3 +1,4 @@
+vim.o.swapfile = false
 -- Relative number line
 vim.o.relativenumber = true
 -- Set highlight on search
@@ -51,3 +52,6 @@ vim.cmd([[
 ]])
 
 vim.opt.foldenable = false
+
+-- See if this does the trick for clipboard (might need to change to "unnamedplus")
+vim.api.nvim_set_option("clipboard", "unnamed")

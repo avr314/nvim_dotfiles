@@ -3,16 +3,8 @@ vim.g.maplocalleader = ' '
 
 vim.keymap.set('n', 'zz', ':update<CR>')
 vim.keymap.set('n', 'qq', ':q!')
-vim.keymap.set('n', '<C-Right>', ':bnext<CR>')
-vim.keymap.set('n', '<C-l>', ':bnext<CR>')
-vim.keymap.set('n', '<C-Left>', ':bprev<CR>')
-vim.keymap.set('n', '<C-h>', ':bprev<CR>')
-vim.keymap.set({'i', 'v'}, '<C-d>', '<Esc>')
-vim.keymap.set('n', '<C-E>', ':E<CR>')
-vim.keymap.set('n', '<S-k>', '{')
-vim.keymap.set('n', '<S-j>', '}')
-vim.keymap.set('n', '<S-Up>', '{')
-vim.keymap.set('n', '<S-Down>', '}')
+vim.keymap.set({'i', 'v', 'n'}, '<C-d>', '<Esc>')
+vim.keymap.set('c', '<C-d>', '<C-c>')
 
 -- LSP Diag
 vim.keymap.set('n', '<C-PageDown>', ':ToggleDiagOn<CR>')
@@ -24,20 +16,27 @@ vim.keymap.set('n', '<C-s>', function() require('nvim-tree.api').tree.toggle() e
 -- Close buffer
 vim.keymap.set('n', '<C-q>', ':bd<CR>')
 
+-- Buffer navigation
+vim.keymap.set('n', '<S-l>', ':bnext<CR>')
+vim.keymap.set('n', '<S-h>', ':bprev<CR>')
 -- Pane navigation 
-vim.keymap.set('n', '<S-Up>', '<C-w><Up>')
-vim.keymap.set('n', '<S-Down>', '<C-w><Down>')
-vim.keymap.set('n', '<S-Right>', '<C-w><Right>')
-vim.keymap.set('n', '<S-Left>', '<C-w><Left>')
+vim.keymap.set('n', '<C-k>', '<C-w><Up>')
+vim.keymap.set('n', '<C-j>', '<C-w><Down>')
+vim.keymap.set('n', '<C-h>', '<C-w><Left>')
+vim.keymap.set('n', '<C-l>', '<C-w><Right>')
 
--- Telescope keymap settings
+-- In-buffer navigation
+vim.keymap.set('n', '<S-k>', '{')
+vim.keymap.set('n', '<S-j>', '}')
+
+-- Telescope
 -- See `:help telescope.builtin`
 vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
-vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
-vim.keymap.set('n', '<leader>/', function()
-  -- You can pass additional configuration to telescope to change theme, layout, etc.
+vim.keymap.set('n', '<leader>/', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
+vim.keymap.set('n', '<leader><space>', function()
+  -- Can pass additional configuration to telescope to change theme, layout, etc.
   require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
-    -- winblend = 10,
+   -- winblend = 10,
     previewer = true,
   })
 end, { desc = '[/] Fuzzily search in current buffer' })
@@ -48,3 +47,14 @@ vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc
 vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
 vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
 vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
+
+
+require("telescope").setup{
+  defaults = {
+    mappings = {
+      i = {
+        ["<C-d>"] = require("telescope.actions").close
+      },
+    },
+  }
+}
