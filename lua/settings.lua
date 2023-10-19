@@ -54,4 +54,12 @@ vim.cmd([[
 vim.opt.foldenable = false
 
 -- See if this does the trick for clipboard (might need to change to "unnamedplus")
-vim.api.nvim_set_option("clipboard", "unnamed")
+vim.api.nvim_set_option("clipboard", "unnamedplus")
+
+vim.api.nvim_create_autocmd("BufWinEnter", {
+  group = vim.api.nvim_create_augroup("help_window_right", {}),
+  pattern = {"*.txt"},
+  callback = function()
+    if vim.o.filetype == 'help' then vim.cmd.wincmd('L') end
+  end
+})
