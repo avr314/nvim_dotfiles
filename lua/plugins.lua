@@ -140,14 +140,25 @@ require('lazy').setup({
     config = function()
       require("bufferline").setup({
         options = {
+          numbers = "none",
           mode = "buffers",
-          buffer_close_icon = 'x',
+          style_preset = require('bufferline').style_preset.no_italic,
+          buffer_close_icon = '',
           separator_style = {'', ''},
           indicator = {
-            icon = '',
+            icon = '▎', -- this should be omitted if indicator style is not 'icon'
             style = 'icon',
           },
-        }
+          offsets = {
+            {
+              filetype = "NvimTree",
+              highlight = "Directory",
+              text_align = "center",
+              separator = true,
+            }
+          },
+          color_icons = true,
+        },
       })
     end
   },

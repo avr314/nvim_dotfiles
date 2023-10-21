@@ -18,12 +18,19 @@ vim.keymap.set('n', '<C-q>', ':bd<CR>')
 
 -- Buffer navigation
 vim.keymap.set('n', '<S-l>', ':bnext<CR>')
+vim.keymap.set('n', '<S-Left>', ':bnext<CR>')
 vim.keymap.set('n', '<S-h>', ':bprev<CR>')
+vim.keymap.set('n', '<S-Right>', ':bprev<CR>')
 -- Pane navigation 
 vim.keymap.set('n', '<C-k>', '<C-w><Up>')
 vim.keymap.set('n', '<C-j>', '<C-w><Down>')
 vim.keymap.set('n', '<C-h>', '<C-w><Left>')
 vim.keymap.set('n', '<C-l>', '<C-w><Right>')
+-- Same for arrows
+vim.keymap.set('n', '<C-Up>', '<C-w><Up>')
+vim.keymap.set('n', '<C-Down>', '<C-w><Down>')
+vim.keymap.set('n', '<C-Left>', '<C-w><Left>')
+vim.keymap.set('n', '<C-Right>', '<C-w><Right>')
 
 -- In-buffer navigation
 vim.keymap.set('n', '<S-k>', '{')
