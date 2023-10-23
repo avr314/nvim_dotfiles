@@ -352,11 +352,12 @@ mason_lspconfig.setup_handlers {
 
   -- Verible suppress warnings conf file for EDA server
 
-  --['verible'] = function ()
-  --  require('lspconfig')['verible'].setup {
-  --    cmd = { '/home/ff/eecs151/tools-151/verible/bin/verible-verilog-ls', '--rules_config', 'home/ff/eecs151/tools-151/verible/rules'}
-  --  }
-  --end,
+  ['verible'] = function ()
+    require('lspconfig')['verible'].setup {
+      --cmd = { '/home/ff/eecs151/tools-151/verible/bin/verible-verilog-ls', '--rules_config', 'home/ff/eecs151/tools-151/verible/rules'}
+      cmd = { '/users/alexfromshermanoaks/.local/share/nvim/mason/packages/verible/verible-v0.0-3385-gedfca850/bin/verible-verilog-ls', '--rules_config', '/users/alexfromshermanoaks/.local/share/nvim/mason/packages/verible/verible-v0.0-3385-gedfca850/rules' }
+    }
+  end,
 
   ['lua_ls'] = function ()
     require('lspconfig')['lua_ls'].setup {
