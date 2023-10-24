@@ -1,2 +1,2 @@
-Lazy-based config
+Lazy-based coonfig
 =================
