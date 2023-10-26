@@ -132,6 +132,26 @@ require('lazy').setup({
     'Yggdroot/indentLine',
   },
 
+  {
+    'akinsho/toggleterm.nvim',
+    version = "*",
+    config = function ()
+      require('toggleterm').setup({
+        open_mapping = [[<C-\>]],
+        shell = 'fish',
+        direction = 'float',
+        highlights = {
+          NormalFloat = {
+            guibg = 0x2c323e,
+          },
+        },
+        float_opts ={
+          border = 'curved',
+        },
+      })
+    end
+  },
+
   -- Bufferline as tabline
   {
     'akinsho/bufferline.nvim',
