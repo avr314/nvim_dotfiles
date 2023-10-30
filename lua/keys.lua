@@ -18,9 +18,9 @@ vim.keymap.set('n', '<C-q>', ':bd<CR>')
 
 -- Buffer navigation
 vim.keymap.set('n', '<S-l>', ':bnext<CR>')
-vim.keymap.set('n', '<S-Left>', ':bnext<CR>')
+vim.keymap.set('n', '<S-Right>', ':bnext<CR>')
 vim.keymap.set('n', '<S-h>', ':bprev<CR>')
-vim.keymap.set('n', '<S-Right>', ':bprev<CR>')
+vim.keymap.set('n', '<S-Left>', ':bprev<CR>')
 -- Pane navigation 
 vim.keymap.set('n', '<C-k>', '<C-w><Up>')
 vim.keymap.set('n', '<C-j>', '<C-w><Down>')

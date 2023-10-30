@@ -37,6 +37,7 @@ require('lazy').setup({
         ensure_installed = {
           'verible',
           'clangd',
+          'rust_analyzer',
         },
       }
     end
@@ -323,6 +324,7 @@ capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 local servers = {
   clangd = {},
   verible = {},
+  rust_analyzer = {},
   -- pyright = {},
   -- gopls = {},
 }
