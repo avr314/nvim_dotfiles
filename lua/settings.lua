@@ -65,3 +65,4 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
 })
 
 vim.api.nvim_set_hl(0, '@lsp.type.comment.c', {})
+vim.api.nvim_set_hl(0, '@lsp.type.comment.cpp', {})
