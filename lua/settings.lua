@@ -63,3 +63,5 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
     if vim.o.filetype == 'help' then vim.cmd.wincmd('L') end
   end
 })
+
+vim.api.nvim_set_hl(0, '@lsp.type.comment.c', {})
