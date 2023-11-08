@@ -143,7 +143,7 @@ require('lazy').setup({
         direction = 'float',
         highlights = {
           NormalFloat = {
-            guibg = 0x2c323e,
+            guibg = 0x2a303e,
           },
         },
         float_opts ={
