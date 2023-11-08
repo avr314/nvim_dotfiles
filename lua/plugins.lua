@@ -244,7 +244,7 @@ require('telescope').setup {
 require('nvim-treesitter.configs').setup {
   ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'vim' },
   sync_install = true,
-  auto_install = true,
+  -- auto_install = true,
   highlight = { enable = true },
   indent = { enable = true },
 }
@@ -338,6 +338,10 @@ local on_attach = function (_, bufnr)
     vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
   end
 
+  nmap('D', vim.lsp.buf.hover, 'Hover Documentation')
+  nmap('S', vim.lsp.buf.signature_help, 'Signature Documentation')
+  nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
+
   nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
   nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
 
@@ -347,9 +351,6 @@ local on_attach = function (_, bufnr)
   nmap('<leader>D', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
   nmap('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
   nmap('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
-  nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
-  nmap('D', vim.lsp.buf.hover, 'Hover Documentation')
-  nmap('S', vim.lsp.buf.signature_help, 'Signature Documentation')
 
   vim.api.nvim_buf_create_user_command(bufnr, 'Format', function (_)
     vim.lsp.buf.format()
