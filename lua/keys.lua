@@ -1,7 +1,9 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
-vim.keymap.set('n', 'zz', ':update<CR>')
+vim.keymap.set('n', '<C-x><C-s>', ':update<CR>')
+vim.keymap.set('n', '<C-x><C-c>', ':q<CR>')
+
 vim.keymap.set('n', 'qq', ':q!')
 vim.keymap.set({'i', 'v', 'n'}, '<C-d>', '<Esc>')
 vim.keymap.set('c', '<C-d>', '<C-c>')
