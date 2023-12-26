@@ -5,7 +5,7 @@ vim.keymap.set('n', '<C-x><C-s>', ':update<CR>')
 vim.keymap.set('n', '<C-x><C-c>', ':q<CR>')
 
 vim.keymap.set('n', 'qq', ':q!')
-vim.keymap.set({'i', 'v', 'n'}, '<C-d>', '<Esc>')
+-- vim.keymap.set({'i', 'v', 'n'}, '<C-d>', '<Esc>')
 vim.keymap.set('c', '<C-d>', '<C-c>')
 
 -- LSP Diag

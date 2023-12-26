@@ -341,12 +341,12 @@ local on_attach = function (_, bufnr)
   nmap('D', vim.lsp.buf.hover, 'Hover Documentation')
   nmap('S', vim.lsp.buf.signature_help, 'Signature Documentation')
   nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
+  nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
 
   nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
   nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
 
   nmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
-  nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
   nmap('gI', vim.lsp.implementation, '[G]oto [I]mplementation')
   nmap('<leader>D', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
   nmap('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
@@ -375,11 +375,14 @@ mason_lspconfig.setup_handlers {
 
   -- Verible suppress warnings conf file for EDA server
 
-  --['verible'] = function ()
-  --  require('lspconfig')['verible'].setup {
-  --    cmd = { '/home/ff/eecs151/tools-151/verible/bin/verible-verilog-ls', '--rules_config', 'home/ff/eecs151/tools-151/verible/rules'}
-  --  }
-  --end,
+  ['verible'] = function ()
+    require('lspconfig')['verible'].setup {
+      --cmd = { '/home/ff/eecs151/tools-151/verible/bin/verible-verilog-ls', '--rules_config', 'home/ff/eecs151/tools-151/verible/rules'}
+      cmd = { '/home/ke314/.local/share/nvim/mason/packages/verible/verible-v0.0-3385-gedfca850/bin/verible-verilog-ls',
+              '--rules_config',
+              '/home/ke314/.local/share/nvim/mason/packages/verible/verible-v0.0-3385-gedfca850/bin/rules'}
+    }
+  end,
 
   ['lua_ls'] = function ()
     require('lspconfig')['lua_ls'].setup {
