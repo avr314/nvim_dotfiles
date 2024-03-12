@@ -106,6 +106,11 @@ require('lazy').setup({
     name = 'nord-nvim',
   },
 
+  {
+    'rmehri01/onenord.nvim',
+  },
+
+
   -- Status line
   {
     'nvim-lualine/lualine.nvim',
