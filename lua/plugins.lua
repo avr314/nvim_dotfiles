@@ -81,7 +81,7 @@ require('lazy').setup({
     dependencies = {
       'nvim-tree/nvim-web-devicons',
     },
-    version = 'nightly',
+    --version = 'nightly',
     config = function ()
       require('nvim-tree').setup()
     end
@@ -383,9 +383,9 @@ mason_lspconfig.setup_handlers {
   ['verible'] = function ()
     require('lspconfig')['verible'].setup {
       --cmd = { '/home/ff/eecs151/tools-151/verible/bin/verible-verilog-ls', '--rules_config', 'home/ff/eecs151/tools-151/verible/rules'}
-      cmd = { '/home/ke314/.local/share/nvim/mason/packages/verible/verible-v0.0-3385-gedfca850/bin/verible-verilog-ls',
+      cmd = { '/home/cc/eecs151/sp24/class/eecs151-abb/.local/share/nvim/mason/packages/verible/verible-v0.0-3483-ga4d61b11/bin/verible-verilog-ls',
               '--rules_config',
-              '/home/ke314/.local/share/nvim/mason/packages/verible/verible-v0.0-3385-gedfca850/bin/rules'}
+              '/home/cc/eecs151/sp24/class/eecs151-abb/.local/share/nvim/mason/packages/verible/verible-v0.0-3483-ga4d61b11/bin/rules'}
     }
   end,
 
