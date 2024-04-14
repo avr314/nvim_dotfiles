@@ -81,7 +81,7 @@ require('lazy').setup({
     dependencies = {
       'nvim-tree/nvim-web-devicons',
     },
-    version = 'nightly',
+    --version = 'nightly',
     config = function ()
       require('nvim-tree').setup()
     end

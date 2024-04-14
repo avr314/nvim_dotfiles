@@ -2,7 +2,7 @@ vim.o.swapfile = false
 -- Relative number line
 vim.o.relativenumber = true
 -- Set highlight on search
-vim.o.hlsearch = false
+vim.o.hlsearch = true
 -- Make line numbers default
 vim.wo.number = true
 -- Enable mouse mode
@@ -67,4 +67,4 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
 vim.api.nvim_set_hl(0, '@lsp.type.comment.c', {})
 vim.api.nvim_set_hl(0, '@lsp.type.comment.cpp', {})
 
-vim.g.copilot_enabled = 0
+vim.g.copilot_enabled = 1
