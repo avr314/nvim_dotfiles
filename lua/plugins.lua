@@ -383,7 +383,7 @@ mason_lspconfig.setup_handlers {
   ['verible'] = function ()
     require('lspconfig')['verible'].setup {
       --cmd = { '/home/ff/eecs151/tools-151/verible/bin/verible-verilog-ls', '--rules_config', 'home/ff/eecs151/tools-151/verible/rules'}
-      cmd = { '/home/ke314/.local/share/nvim/mason/packages/verible/verible-v0.0-3385-gedfca850/bin/verible-verilog-ls',
+      cmd = { '/home/vlkv/.local/share/nvim/mason/packages/verible/verible-v0.0-3624-gd256d779/bin/verible-verilog-ls',
               '--rules_config',
               '/home/vlkv/.local/share/nvim/mason/packages/verible/verible-v0.0-3624-gd256d779/bin/rules'}
     }
