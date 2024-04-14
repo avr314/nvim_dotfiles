@@ -68,5 +68,3 @@ require("telescope").setup{
     },
   }
 }
-
-vim.keymap.set('i', '<C-s>', '<Plug>(copilot-suggest)')
