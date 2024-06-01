@@ -12,7 +12,6 @@ vim.keymap.set('n', '<C-s>', function() require('nvim-tree.api').tree.toggle() e
 
 -- Within buffer
 vim.keymap.set('n', 'zz', ':update<CR>')
-vim.keymap.set('n', 'qq', ':q!')
 vim.keymap.set('n', '<C-q>', ':bd<CR>')
 vim.keymap.set('n', '<S-k>', '{')
 vim.keymap.set('n', '<S-j>', '}')
@@ -53,13 +52,4 @@ vim.keymap.set('i', '<C-}>', '<Plug>(copilot-next)')
 vim.keymap.set('i', '<C-{>', '<Plug>(copilot-previous)')
 
 -- CANDIDATES FOR DELETION
--- Pane navigation 
---vim.keymap.set('n', '<C-k>', '<C-w><Up>')
---vim.keymap.set('n', '<C-j>', '<C-w><Down>')
---vim.keymap.set('n', '<C-h>', '<C-w><Left>')
---vim.keymap.set('n', '<C-l>', '<C-w><Right>')
--- Same for arrows
---vim.keymap.set('n', '<C-Up>', '<C-w><Up>')
---vim.keymap.set('n', '<C-Down>', '<C-w><Down>')
---vim.keymap.set('n', '<C-Left>', '<C-w><Left>')
---vim.keymap.set('n', '<C-Right>', '<C-w><Right>')
+--vim.keymap.set('n', 'qq', ':q!')
