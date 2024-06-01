@@ -9,7 +9,7 @@ vim.o.termguicolors   = true
 vim.o.expandtab       = true
 vim.o.cursorline      = true
 -- vim.o.cursorcolumn = true
-
+--
 vim.o.mouse       = 'a'                 -- Enable mouse mode
 vim.o.clipboard   = 'unnamedplus'       -- Sync clipboard between env and nvim
 vim.o.completeopt = 'menuone,noselect'  -- Set completeopt to have a better completion experience
@@ -19,10 +19,14 @@ vim.o.timeoutlen  = 300
 vim.o.tabstop     = 2
 vim.o.shiftwidth  = 2 -- '>>' operator <num> spaces
 
-vim.wo.number      = true   -- Make line numbers default
-vim.wo.signcolumn  = 'yes'  -- Keep signcolumn on by default
+vim.wo.number       = true   -- Make line numbers default
+vim.wo.signcolumn   = 'yes'  -- Keep signcolumn on by default
 
-vim.opt.foldenable = false
+vim.opt.foldenable  = false
+vim.opt.list        = true
+vim.opt.listchars   = { tab = '» ', trail = '·', nbsp = '␣' }
+vim.opt.inccommand  = 'split'
+vim.opt.scrolloff   = 10
 
 vim.cmd([[ 
   :highlight CursorColumn guibg=#3e4452
