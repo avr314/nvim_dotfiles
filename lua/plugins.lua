@@ -52,6 +52,18 @@ require('lazy').setup({
     end
   },
 
+  { 'j-hui/fidget.nvim',
+    tag = 'legacy',
+    config = function ()
+      require('fidget').setup({
+        window = {
+          blend = 0,
+          relative = 'editor',
+        },
+      })
+    end
+  },
+
   -- LSP
   {
     'neovim/nvim-lspconfig',
@@ -59,7 +71,6 @@ require('lazy').setup({
       'williamboman/mason-lspconfig.nvim',
       'williamboman/mason.nvim',
       'folke/neodev.nvim',
-      { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
     },
   },
 
@@ -221,7 +232,7 @@ require('lazy').setup({
       metals_config.on_attach = function(client, bufnr)
         vim.keymap.set("n", "D", vim.lsp.buf.hover)
         vim.keymap.set("n", "gD", vim.lsp.buf.definition)
-        vim.keymap.set("n", "gi", vim.lsp.buf.implementation)
+        vim.keymap.set("n", "I", vim.lsp.buf.implementation)
       end
 
       return metals_config
@@ -246,10 +257,9 @@ require('lazy').setup({
 ------------------------------------------------------------------------------
 ------------------------------------------------------------------------------
 
+
 -- [[ Enable fzf native, if installed ]]
 pcall(require('telescope').load_extension, 'fzf')
-
-
 
 -- [[ Telescope config ]]
 require('telescope').setup {
@@ -420,7 +430,9 @@ mason_lspconfig.setup_handlers {
   end
 }
 
-
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+  border = "rounded",
+})
 
 -- modeline
 -- vim: ts=2 sts=2 sw=2 et

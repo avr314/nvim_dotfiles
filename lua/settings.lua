@@ -31,16 +31,15 @@ vim.opt.scrolloff   = 10
 vim.cmd([[ 
   :highlight CursorColumn guibg=#3e4452
   :highlight CursorLine guibg=#3e4452
+  :highlight FloatBorder guifg=#f0cb75
+  :highlight NormalFloat guibg=#2b313d
+  :highlight FidgetTitle guifg=#f0cb75
+  :highlight Folded guifg=#3e4452
 ]])
 
 
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-
--- Folded functions
-vim.cmd([[ 
-  :highlight Folded guifg=#3e4452
-]])
 
 -- See if this does the trick for clipboard (might need to change to "unnamedplus")
 vim.api.nvim_set_option("clipboard", "unnamedplus")
